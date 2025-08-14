@@ -1,0 +1,167 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+/* Calculator Display */
+.calculator-display {
+    min-height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+    font-size: 3rem;
+}
+
+/* Base Button Styling */
+.btn {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition-property: all;
+    transition-duration: 150ms;
+    transform: scale(1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+}
+
+.btn:active {
+    transform: scale(0.98);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Number Buttons */
+.btn-number {
+    background-color: #e2e8f0;
+    color: #2d3748;
+}
+.btn-number:hover {
+    background-color: #cbd5e0;
+}
+
+/* Secondary Buttons */
+.btn-secondary {
+    background-color: #a0aec0;
+    color: #ffffff;
+}
+.btn-secondary:hover {
+    background-color: #718096;
+}
+
+/* Operator Buttons */
+.btn-operator {
+    background-color: #4c51bf;
+    color: #ffffff;
+}
+.btn-operator:hover {
+    background-color: #3b439c;
+}
+
+/* Equals Button */
+.btn-equals {
+    background-color: #38a169;
+    color: #ffffff;
+}
+.btn-equals:hover {
+    background-color: #2f855a;
+}
+
+/* Dark Mode Overrides */
+html.dark body {
+    background-color: #1a202c;
+    color: #e2e8f0;
+}
+
+html.dark header {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+html.dark main > div {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .calculator-display {
+    background-color: #4a5568;
+    color: #e2e8f0;
+}
+
+html.dark .btn-number {
+    background-color: #4a5568;
+    color: #e2e8f0;
+}
+html.dark .btn-number:hover {
+    background-color: #64748b;
+}
+
+html.dark .btn-secondary {
+    background-color: #64748b;
+    color: #e2e8f0;
+}
+html.dark .btn-secondary:hover {
+    background-color: #4a5568;
+}
+
+html.dark .btn-operator {
+    background-color: #6b46c1;
+    color: #ffffff;
+}
+html.dark .btn-operator:hover {
+    background-color: #805ad5;
+}
+
+html.dark .btn-equals {
+    background-color: #48bb78;
+    color: #ffffff;
+}
+html.dark .btn-equals:hover {
+    background-color: #68d391;
+}
+
+/* Footer Styles */
+.footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.footer p {
+    margin-bottom: 1rem;
+}
+
+.footer .socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .footer p {
+        margin-bottom: 0;
+    }
+    .footer .socials {
+        justify-content: flex-end;
+    }
+}
+
+html.dark .footer {
+    background-color: #1a202c;
+    color: #cbd5e0;
+}
+
+html.dark .footer .socials a:hover {
+    color: #9f7aea;
+}

@@ -1,0 +1,491 @@
+/* Global Reset and Box-Sizing */
+html {
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width/height [1] */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+*, *::before, *::after {
+    box-sizing: inherit; /* Inherit box-sizing for all elements [1] */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Using Inter font from Google Fonts [2] */
+    line-height: 1.6;
+    color: #e0e0e0; /* Light gray for text */
+    background-color: #1a1a2e; /* Deep dark blue/purple background */
+    perspective: 1000px; /* Establishes a 3D perspective for child elements [3] */
+}
+
+/* Navigation Bar Styling (Flexbox) */
+header {
+    background-color: #16213e; /* Slightly lighter dark blue */
+    color: #e0e0e0;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+    display: flex; /* Enables Flexbox for navigation items [4] */
+    justify-content: space-between; /* Distributes space between logo and links [4] */
+    align-items: center; /* Vertically aligns items in the center [4] */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e94560; /* Vibrant accent color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex; /* Enables Flexbox for list items */
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block; /* Allows transform to apply */
+}
+
+.nav-links a:hover {
+    color: #e94560; /* Accent color on hover */
+    transform: translateY(-3px) scale(1.05); /* Subtle lift and scale on hover */
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(to right, #0f3460, #16213e); /* Deep blue gradient */
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    min-height: 70vh; /* Increased height for visual impact */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Ensures background elements stay within bounds */
+    /* Basic parallax effect using fixed background attachment */
+    background-attachment: fixed; /* [5] */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Optional: Add a subtle animated background element for more depth */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://via.placeholder.com/1500x800/0a0a1a/ffffff?text=BACKGROUND') no-repeat center center/cover; /* Placeholder background image */
+    opacity: 0.1;
+    transform: translateZ(-1px) scale(1.1); /* Moves background slightly back and scales it up to compensate [5] */
+    animation: subtleZoom 20s infinite alternate ease-in-out; /* Subtle animation */
+    pointer-events: none; /* Allows clicks to pass through */
+}
+
+@keyframes subtleZoom {
+    from { transform: translateZ(-1px) scale(1.1); }
+    to { transform: translateZ(-1px) scale(1.05); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* Ensures content is above the pseudo-background */
+    animation: fadeInScale 1s ease-out forwards; /* Animation for content */
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero-section h1 {
+    font-size: 3.8rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section p {
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+.cta-button {
+    background-color: #e94560; /* Vibrant accent color */
+    color: #fff;
+    padding: 18px 35px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:hover {
+    background-color: #ba2d47; /* Darker accent on hover */
+    transform: translateY(-5px) scale(1.02); /* Lift and subtle scale */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* General Section Styling */
+section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative; /* For potential future CSS 3D effects on sections */
+    transform-style: preserve-3d; /* [3] */
+}
+
+section h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    color: #e94560; /* Accent color for headings */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* About Section (Flexbox for content) */
+.about-section {
+    background-color: #22223b; /* Darker background */
+    border-radius: 10px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.about-content {
+    display: flex; /* Arranges text and image side-by-side [4] */
+    align-items: center;
+    gap: 60px;
+    text-align: left;
+    flex-wrap: wrap; /* Allows content to wrap on smaller screens */
+    justify-content: center;
+}
+
+.about-content.text-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-content.image-content {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.about-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease;
+}
+
+.about-content img:hover {
+    transform: rotateY(5deg) scale(1.03); /* Subtle 3D tilt on hover [3] */
+}
+
+/* Services Section (Flexbox for cards) */
+.services-section {
+    background-color: #2c2c4a; /* Another dark background shade */
+}
+
+.service-cards {
+    display: flex; /* Arranges service cards in a row [4] */
+    flex-wrap: wrap; /* Allows cards to wrap to the next line on smaller screens [4] */
+    justify-content: center;
+    gap: 40px;
+}
+
+.card {
+    background-color: #333355; /* Card background */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    flex: 1 1 calc(33% - 40px); /* Allows cards to grow/shrink and take up approx 33% width [4] */
+    min-width: 280px;
+    text-align: left;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d; /* For 3D effects on hover [3] */
+}
+
+.card:hover {
+    transform: translateY(-10px) rotateX(3deg) scale(1.03); /* Lift, subtle 3D tilt, and scale on hover [3] */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+.card h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #e94560; /* Accent color */
+}
+
+.card p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+/* Portfolio Section (CSS Grid for layout) */
+.portfolio-section {
+    background-color: #22223b;
+}
+
+.portfolio-grid {
+    display: grid; /* Enables CSS Grid for portfolio items [6] */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid columns [6] */
+    gap: 40px;
+}
+
+.portfolio-item {
+    background-color: #333355;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d; /* For 3D effects on hover [3] */
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px) rotateY(3deg) scale(1.03); /* Lift, subtle 3D tilt, and scale on hover [3] */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05); /* Zoom effect on image inside item */
+}
+
+.portfolio-item h3 {
+    font-size: 1.6rem;
+    margin: 20px 20px 10px;
+    color: #e94560;
+}
+
+.portfolio-item p {
+    font-size: 1rem;
+    color: #ccc;
+    margin: 0 20px 20px;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #2c2c4a;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid #555577; /* Darker border */
+    border-radius: 8px;
+    font-size: 1.1rem;
+    background-color: #444466; /* Dark input background */
+    color: #e0e0e0; /* Light text color */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #e94560; /* Accent border on focus */
+    box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.3); /* Subtle glow */
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #16213e;
+    color: #e0e0e0;
+    padding: 50px 20px;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.footer-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.footer-content p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* Social Media Buttons (Font Awesome) */
+.rounded-social-buttons {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Spacing between buttons */
+}
+
+.rounded-social-buttons.social-button {
+    display: inline-flex; /* Use flex for centering icon */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    height: 4.5rem;
+    border: 0.25rem solid transparent;
+    text-decoration: none;
+    color: #fefefe;
+    font-size: 2.5rem; /* Larger icons */
+    border-radius: 75%; /* Perfect circles */
+    transition: all 0.5s ease;
+    box-shadow: 2 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.rounded-social-buttons.social-button:hover,
+.rounded-social-buttons.social-button:focus {
+    transform: rotate(360deg) scale(1.1); /* Spin and slight scale on hover [7] */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.rounded-social-buttons.social-button.github {
+    background: #000000;
+}
+.rounded-social-buttons.social-button.github:hover,
+.rounded-social-buttons.social-button.github:focus {
+    color: #000000;
+    background: #e0e0e0; /* Light gray on hover */
+    border-color: #000000;
+}
+
+.rounded-social-buttons.social-button.instagram {
+    background: #C13584; /* Instagram gradient start color */
+}
+.rounded-social-buttons.social-button.instagram:hover,
+.rounded-social-buttons.social-button.instagram:focus {
+    color: #C13584;
+    background: #e0e0e0;
+    border-color: #C13584;
+}
+
+.rounded-social-buttons.social-button.linkedin {
+    background: #007bb5;
+}
+.rounded-social-buttons.social-button.linkedin:hover,
+.rounded-social-buttons.social-button.linkedin:focus {
+    color: #007bb5;
+    background: #e0e0e0;
+    border-color: #007bb5;
+}
+
+/* Responsive Design (Media Queries) */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+   .nav-links {
+        margin-top: 15px;
+    }
+
+   .nav-links li {
+        margin: 0 10px;
+    }
+
+   .hero-section h1 {
+        font-size: 2.8rem;
+    }
+
+   .hero-section p {
+        font-size: 1.3rem;
+    }
+
+   .cta-button {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+
+    section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+    }
+
+   .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+   .about-content.text-content,
+   .about-content.image-content {
+        flex: none;
+        width: 100%;
+    }
+
+   .service-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+   .card {
+        flex: 1 1 90%;
+        padding: 30px;
+    }
+
+   .portfolio-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+   .rounded-social-buttons {
+        gap: 10px;
+    }
+
+   .rounded-social-buttons.social-button {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+    }
+}
